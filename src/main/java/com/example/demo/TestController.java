@@ -1,10 +1,13 @@
 package com.example.demo;
 
 import com.example.demo.dto.DemoResponse;
+import com.example.demo.model.Item;
 import com.example.demo.services.DemoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class TestController {
@@ -22,12 +25,16 @@ public class TestController {
         return "You whispered : " + msg + "\n";
     }
     @GetMapping("/test")
-    public String test(){
-        return demoService.test();
+    public DemoResponse test(){
+        return DemoResponse.debug(demoService.test());
     }
 
     @GetMapping("/demoReturn")
     public DemoResponse returnDemo(){
         return new DemoResponse(true, "Test Jackson hee hee");
+    }
+    public List<Item> testALl(){
+        System.out.println(demoService.testAll());
+        return demoService.testAll();
     }
 }
