@@ -28,6 +28,10 @@ public class DemoService {
         Optional<Item> itemFound = demoRepository.findById(id);
         return itemFound;
     }
+//    public void deleteById(){
+//
+//        demoRepository.deleteAllById();
+//    }
 //    public String checkVer(){
 //        demoRepository.hashCode()
 //    }

@@ -1,12 +1,11 @@
 package com.example.demo;
 
 import com.example.demo.dto.DemoResponse;
+import com.example.demo.helper.DebugHelp;
 import com.example.demo.model.Item;
 import com.example.demo.services.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.Optional;
 
 @SuppressWarnings("ALL")
 @RestController
+@RequestMapping("/api/item")
 public class TestController {
     @Autowired
     private DemoService demoService;
@@ -48,5 +48,13 @@ public class TestController {
         Map<String, Optional<Item>> itemFound = new HashMap<>();
         itemFound.put("Result", demoService.searchById(id));
         return  DemoResponse.debug(itemFound);
+    }
+
+    @DeleteMapping("/del")
+    public DebugHelp destroy(@RequestBody Map<String, List<Long>> body){
+        List<Long> listOfId = body.get("itemId");
+        DebugHelp debugHelp = new DebugHelp();
+        debugHelp.addDebug("Test", listOfId);
+        return debugHelp;
     }
 }
