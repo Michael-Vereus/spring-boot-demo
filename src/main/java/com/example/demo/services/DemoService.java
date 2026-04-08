@@ -5,10 +5,7 @@ import com.example.demo.model.Item;
 import com.example.demo.repository.DemoRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class DemoService {
@@ -26,6 +23,10 @@ public class DemoService {
     public List<Item> testAll(){
         List<Item> testAll = demoRepository.findAll();
         return testAll;
+    }
+    public Optional<Item> searchById(Long id){
+        Optional<Item> itemFound = demoRepository.findById(id);
+        return itemFound;
     }
 //    public String checkVer(){
 //        demoRepository.hashCode()

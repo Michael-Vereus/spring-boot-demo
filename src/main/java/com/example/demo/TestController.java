@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+@SuppressWarnings("ALL")
 @RestController
 public class TestController {
     @Autowired
@@ -39,5 +41,12 @@ public class TestController {
         Map<String, List<Item>> testDb = new HashMap<>();
         testDb.put("Result", demoService.testAll());
         return DemoResponse.debug(testDb);
+    }
+
+    @GetMapping("/get/{id}")
+    public DemoResponse search(@PathVariable Long id){
+        Map<String, Optional<Item>> itemFound = new HashMap<>();
+        itemFound.put("Result", demoService.searchById(id));
+        return  DemoResponse.debug(itemFound);
     }
 }
