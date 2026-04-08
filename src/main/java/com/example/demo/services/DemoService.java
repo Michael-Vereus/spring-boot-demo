@@ -27,4 +27,7 @@ public class DemoService {
         List<Item> testAll = demoRepository.findAll();
         return testAll;
     }
+//    public String checkVer(){
+//        demoRepository.hashCode()
+//    }
 }
