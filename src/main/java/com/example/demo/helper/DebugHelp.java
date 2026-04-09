@@ -2,6 +2,7 @@ package com.example.demo.helper;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DebugHelp<T> {
@@ -16,5 +17,8 @@ public class DebugHelp<T> {
     }
     public Map<String, T> getDebughere(){
         return this.debughere;
+    }
+    public static DebugHelp debug (){
+        return new DebugHelp();
     }
 }

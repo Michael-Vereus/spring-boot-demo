@@ -36,11 +36,10 @@ public class TestController {
     }
 
     @GetMapping("/testSQLdb")
-    public DemoResponse testALl(){
-        System.out.println(demoService.testAll());
-        Map<String, List<Item>> testDb = new HashMap<>();
-        testDb.put("Result", demoService.testAll());
-        return DemoResponse.debug(testDb);
+    public DebugHelp testALl(){ // still uses DebugHelp for simplicity and debugging
+        DebugHelp debugCheck = DebugHelp.debug();
+        debugCheck.addDebug("debug_1", demoService.testAll());
+        return debugCheck;
     }
 
     @GetMapping("/get/{id}")
@@ -54,7 +53,7 @@ public class TestController {
     public DebugHelp destroy(@RequestBody Map<String, List<Long>> body){
         List<Long> listOfId = body.get("itemId");
         DebugHelp debugHelp = new DebugHelp();
-        debugHelp.addDebug("Test", listOfId);
+        debugHelp.addDebug("Test", demoService.deleteById(listOfId));
         return debugHelp;
     }
 }
