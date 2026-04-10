@@ -33,11 +33,16 @@ public class DemoService {
     public String deleteById(List<Long> listOdId){
         int affectedRows = demoRepository.deleteByIdIn(listOdId); // List class already implements Iterable
 //        demoRepository.deleteAllById(listOdId);
-        if(affectedRows > 0){
+        if(affectedRows > 0){ // check if there are rowas affected or not
             return "Successfully Deleted";
         }else{
             return "No such Item exists with that ID";
         }
+    }
+    @Transactional
+    public Item insertItem(Item item){
+        return demoRepository.save(item);
+
     }
 //    public String checkVer(){
 //        demoRepository.hashCode()

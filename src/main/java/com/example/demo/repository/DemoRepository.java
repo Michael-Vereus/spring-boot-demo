@@ -14,7 +14,7 @@ import java.util.List;
 public interface DemoRepository extends JpaRepository<Item, Long> {
     default  String test(){return "Ok Repository is alive : " + this.toString();}
 
-    @Modifying
-    @Query("DELETE FROM Item i where i.id IN :ids")
-    int deleteByIdIn(@Param("ids") List<Long> ids);
+    @Modifying // To basically modify a query
+    @Query("DELETE FROM Item i where i.id IN :ids") // the query u want
+    int deleteByIdIn(@Param("ids") List<Long> ids); // told the JPA to return the rows affecteed in this case how many rows deleted
 }
