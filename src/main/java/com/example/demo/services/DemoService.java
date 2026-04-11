@@ -42,7 +42,6 @@ public class DemoService {
     @Transactional
     public Item insertItem(Item item){
         return demoRepository.save(item);
-
     }
 //    public String checkVer(){
 //        demoRepository.hashCode()

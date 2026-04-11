@@ -2,7 +2,6 @@ package com.example.demo.helper;
 
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DebugHelp<T> {
@@ -21,4 +20,11 @@ public class DebugHelp<T> {
     public static DebugHelp debug (){
         return new DebugHelp();
     }
+    public static DebugHelp fail(String msg){
+        DebugHelp debugHelp = new DebugHelp();
+        debugHelp.addDebug("Err", msg);
+        return debugHelp;
+    }
 }
+
+// read this when u come back here add getter setter here for item receiving incoming dto okay?

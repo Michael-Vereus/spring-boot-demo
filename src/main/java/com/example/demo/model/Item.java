@@ -1,4 +1,5 @@
 package com.example.demo.model;
+import com.example.demo.dto.Item.CreateItem;
 import jakarta.persistence.*;
 
 @Entity // This tells Spring: "Make a table out of this"
@@ -12,13 +13,24 @@ public class Item {
     private String name;
     private Double price;
 
-    // IMPORTANT: You must have a default constructor,
-    // and Getters/Setters for Spring to work!
-    public Item() {}
+    public Item(Long id, String name, Double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Item(CreateItem createItem){
+        this.id = createItem.getId();
+        this.name = createItem.getName();
+        this.price = createItem.getPrice();
+    }
+
+    // DEFAULT CONSTRUCTOR for SPRING to WORK
+    public Item(){}
 
     public Long getId() { return id; }
     public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
     public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
+
+    // removed some unused setter
 }
